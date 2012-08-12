@@ -1,0 +1,11 @@
+{
+    "name": "mistylabs/mistydb",
+    "type": "library",
+    "description": "MistyDb - abstraction layer over Doctrine ORM",
+    "require": {
+        " doctrine/orm" : ">2.2.*"
+    },
+    "autoload": {
+       "psr-0": {"MistyDb": "src/"}
+    }
+}
