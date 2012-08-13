@@ -1,11 +1,14 @@
 {
-    "name": "mistylabs/mistydb",
+    "name": "mystlabs/mistydoctrine",
     "type": "library",
-    "description": "MistyDb - abstraction layer over Doctrine ORM",
+    "description": "MistyDoctrine - abstract Model/Dao/TransactionalService for Doctrine 2",
     "require": {
-        " doctrine/orm" : ">2.2.*"
+        "doctrine/orm" : ">2.2.*"
+    },
+    "require-dev": {
+    	"mystlabs/mistytesting": "dev-master"
     },
     "autoload": {
-       "psr-0": {"MistyDb": "src/"}
+       "psr-0": {"MistyDoctrine": "src/"}
     }
 }
