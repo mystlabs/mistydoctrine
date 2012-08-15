@@ -3,3 +3,4 @@ vendor/
 
 # files
 composer.lock
+tests/bootstrap.php

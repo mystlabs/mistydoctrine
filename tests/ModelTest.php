@@ -1,8 +1,9 @@
 <?php
 
 use MistyDoctrine\Model;
+use MistyTesting\UnitTest;
 
-class ModelTest extends MistyTesting\Unit
+class ModelTest extends UnitTest
 {
 	public function testSetAndGet()
 	{

@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * Rename this file to bootstrap.php and fill in the details
+ */
+function get_db_params()
+{
+	return array(
+		'driver'	=> 'pdo_mysql',
+		'user'		=> '',
+		'password'	=> '',
+		'dbname'	=> '',
+	);
+}
+
+/**
+ * Add the folders in which your models are defined
+ */
+function get_model_paths()
+{
+	return array(
+
+	);
+}
