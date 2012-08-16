@@ -13,6 +13,7 @@ include __DIR__ . '/../../../tests/bootstrap.php';
 class DoctrineTest extends UnitTest
 {
 	protected $entityManager;
+	protected $connection;
 
 	public function initTest()
 	{
@@ -31,6 +32,7 @@ class DoctrineTest extends UnitTest
 
 		$config = Setup::createAnnotationMetadataConfiguration($paths, true);
 		$this->entityManager = EntityManager::create($params, $config);
+		$this->connection = $this->entityManager->getConnection();
 
 		$database = new Database( $this->entityManager );
 		$database->dropDatabase();
@@ -40,5 +42,15 @@ class DoctrineTest extends UnitTest
 	public function clearTest()
 	{
 
+	}
+
+	protected function assertRecordCount($expectedCount, $table)
+	{
+		$this->assertEquals(
+			$expectedCount,
+			$this->connection->fetchColumn(
+				'SELECT COUNT(*) FROM ' . $table
+			)
+		);
 	}
 }
