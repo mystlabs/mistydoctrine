@@ -100,6 +100,16 @@ class ModelTest extends UnitTest
 		$this->assertEquals('two', $array['prop2']);
 	}
 
+	public function testMagicSetter()
+	{
+		$model = TestModel::create()
+			->setAnotherProperty('value')
+			->setProp1(1);
+
+		$this->assertEquals(1, $model->prop1);
+		$this->assertEquals('value', $model->another_property);
+	}
+
 	public function testFunctionify()
 	{
 		$this->assertEquals('Name', Model::functionify('name'));
@@ -113,6 +123,7 @@ class TestModel extends Model
 	protected $prop1;
 	protected $prop2;
 	protected $prop3;
+	protected $another_property;
 	protected $with_setter;
 	protected $with_getter;
 
