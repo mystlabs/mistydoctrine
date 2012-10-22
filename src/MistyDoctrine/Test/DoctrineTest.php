@@ -12,6 +12,8 @@ use MistyTesting\UnitTest;
 class DoctrineTest extends UnitTest
 {
     protected $entityManager;
+
+    /** @var \Doctrine\DBAL\Connection */
     protected $connection;
     protected $dao;
 

@@ -5,6 +5,11 @@ use MistyDoctrine\Test\DoctrineTest;
 
 class DaoTest extends DoctrineTest
 {
+	public function before()
+	{
+		$this->dao = new DaoTestImpl($this->entityManager);
+	}
+
 	public function testActiveTransactions()
 	{
 		$this->assertFalse( $this->dao->hasActiveTransaction() );
