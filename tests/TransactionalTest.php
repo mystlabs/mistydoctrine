@@ -5,8 +5,13 @@ use MistyTesting\UnitTest;
 
 class TransactionalTest extends UnitTest
 {
+    /** @var \Mockery\MockInterface */
 	protected $mockDao;
+
+    /** @var \TransactionalTestImpl */
 	protected $transactional;
+
+    private $privateField;
 
 	public function before()
 	{
@@ -61,16 +66,16 @@ class TransactionalTest extends UnitTest
 	public function testCanCallPrivateMethods()
 	{
 		$this->_setupExpectation( false, true, true, false );
-		$this->transactional->t(function($self){
-			$self->privateMethod();
+		$this->transactional->t(function(){
+			$this->privateMethod();
 		});
 	}
 
 	public function testCanReadPrivateFields()
 	{
 		$this->_setupExpectation( false, true, true, false );
-		$this->transactional->t(function($self){
-			$self->privateField;
+		$this->transactional->t(function(){
+            $this->privateField;
 		});
 	}
 
@@ -128,19 +133,17 @@ class TransactionalTest extends UnitTest
 				->once();
 		}
 	}
+
+    private function privateMethod()
+    {
+
+    }
 }
 
 class TransactionalTestImpl extends Transactional
 {
-	private $privateField;
-
 	public function t($func, $callback=null)
 	{
 		return parent::t($func, $callback);
-	}
-
-	private function privateMethod()
-	{
-
 	}
 }

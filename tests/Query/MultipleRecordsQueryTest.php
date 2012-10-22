@@ -20,7 +20,8 @@ class MultipleRecordsQueryTest extends UnitTest
         $this->queryBuilder = Mockery::mock('QueryBuilder');
         $this->clauseParser = new ClauseParser();
         $this->query = new MultipleRecordsQuery($this->queryBuilder, $this->clauseParser, array(
-            'idField' => 'm.id'
+            'prefix' => 'm',
+            'idField' => 'id',
         ));
 
         $this->clauseParser->add('id', 'm.id')->equalTo();

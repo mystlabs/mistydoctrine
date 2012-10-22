@@ -70,7 +70,6 @@ abstract class Transactional
             if ($newTransaction) {
                 return null;
             } else {
-                echo 'throw? '; // TODO fix me
                 throw $ex;
             }
         }

@@ -20,7 +20,8 @@ class SingleRecordQueryTest extends UnitTest
         $this->queryBuilder = Mockery::mock('QueryBuilder');
         $this->clauseParser = new ClauseParser();
         $this->query = new SingleRecordQuery($this->queryBuilder, $this->clauseParser, array(
-            'idField' => 'm.id'
+            'prefix' => 'm',
+            'idField' => 'id',
         ));
 
         $this->clauseParser->add('id', 'm.id')->equalTo();
@@ -102,7 +103,28 @@ class SingleRecordQueryTest extends UnitTest
 
     public function testJoin()
     {
-        $this->assertTrue(false);
+        $this->queryBuilder
+            ->shouldReceive('join')
+            ->once()
+            ->andReturn($this->queryBuilder);
+
+        $this->query
+            ->join(array(
+                'm.pro' => 'p'
+            ));
+    }
+
+    /**
+     * @expectedException MistyDoctrine\Exception\QueryException
+     */
+    public function testJoin_whenAlreadyExecuted()
+    {
+        $this->setupQueryReturn(null);
+
+        $this->query->find();
+        $this->query->join(array(
+            'm.pro' => 'p'
+        ));
     }
 
     private function setupQueryReturn($return)
