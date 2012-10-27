@@ -4,7 +4,7 @@
     "description": "MistyDoctrine - abstract Model/Dao/TransactionalService for Doctrine 2",
     "minimum-stability": "dev",
     "require": {
-        "doctrine/orm": "2.2.*",
+        "doctrine/orm": "2.3.*",
         "mystlabs/mistyutils": "dev-master"
     },
     "require-dev": {
